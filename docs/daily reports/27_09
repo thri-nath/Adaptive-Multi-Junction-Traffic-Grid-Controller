@@ -1,1 +1,10 @@
 
+27_09_2026 
+
+sunday 
+
+
+Today, I worked on the system architecture for the AI-based traffic signal controller.
+I clarified the two 4-way junctions, all 8 traffic approaches, pedestrian requests, green-wave coordination, and emergency override. 
+I also planned the documentation structure, including architecture.md, block diagrams, verification plan, and technical report.
+I understood that the technical report should be completed after the implementation and verification stages.
