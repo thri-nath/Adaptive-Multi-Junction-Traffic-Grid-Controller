@@ -1,0 +1,7 @@
+28_09_2026 
+
+Monday 
+
+ Today, I refined the system block diagram for the AI-based traffic signal controller using draw.io.
+ I organized the two 4-way junctions and their 8 traffic approaches, along with pedestrian requests, emergency override, and green-wave coordination.
+ I reviewed the overall system flow and uploaded the updated architecture diagram and project documentation to the GitHub repository for version control and further development.
