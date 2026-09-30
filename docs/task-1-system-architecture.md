@@ -1,8 +1,8 @@
 						# Adaptive Traffic Controller — System Architecture and Planning
 
-##1. System Overview & Design Objectives
+1. System Overview & Design Objectives
    
-   ### 1.1 System Overview
+   1.1 System Overview
 
   	This project is an adaptive traffic controller for two four-way junctions, called Junction A and Junction B. Each junction controls four approaches (North,        South, East and West), 	which are grouped into two phases: North-South (NS) and East-West (EW). Each junction cycles through its phases in the usual green,        yellow and red sequence. The NS and EW phases of      	 a junction are never green at the same time, so conflicting traffic is always separated.
 
@@ -12,7 +12,7 @@
 	
 	 The third mechanism is a single global emergency override input. When it is asserted, both junctions move safely to an all-red state within a specified number     of clock cycles. They 	stay in that state while the emergency is active and return to normal operation once it is released.
 
-  ### 1.2 Design Objectives
+   1.2 Design Objectives
 
 	 The first objective is correct normal sequencing. Each junction must run its NS and EW phases with proper green, yellow and red timing, and it must do so on       its own when no 	coordination event is active.
 
@@ -30,11 +30,13 @@
 
 	The eighth objective is verifiability. The design is split into modules with clearly defined interfaces, so each block can be tested in isolation and then         together, and every 	requirement can be checked against a specific test scenario.
 
-##2.Top-Level Architecture & Block Diagram  
+2.Top-Level Architecture & Block Diagram  
 
-	### High-Level System Architecture
+	 High-Level System Architecture
 
 	![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram.svg)
 		
 		
-	
+	<img width="2728" height="1920" alt="traffic_system_top_block_diagram" src="https://github.com/user-attachments/assets/959537ee-aa68-4524-aacf-110afeb62f92" />
+<img width="213" height="150" alt="traffic_system_top_block_diagram" src="https://github.com/user-attachments/assets/701969b7-6829-459a-ac40-5fd9c579255c" />
+
