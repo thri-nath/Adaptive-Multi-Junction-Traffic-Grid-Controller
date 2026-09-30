@@ -30,13 +30,12 @@
 
 	The eighth objective is verifiability. The design is split into modules with clearly defined interfaces, so each block can be tested in isolation and then         together, and every 	requirement can be checked against a specific test scenario.
 
-2.Top-Level Architecture & Block Diagram  
+## 2.Top-Level Architecture & Block Diagram  
 
-	 High-Level System Architecture
+	###High-Level System Architecture
 
 	![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram.svg)
 		
 		
-	<img width="2728" height="1920" alt="traffic_system_top_block_diagram" src="https://github.com/user-attachments/assets/959537ee-aa68-4524-aacf-110afeb62f92" />
-<img width="213" height="150" alt="traffic_system_top_block_diagram" src="https://github.com/user-attachments/assets/701969b7-6829-459a-ac40-5fd9c579255c" />
+	
 
