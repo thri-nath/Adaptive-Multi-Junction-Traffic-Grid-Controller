@@ -33,7 +33,7 @@
 
 ###High-Level System Architecture
 
-![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram.svg)
+![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram_v2.svg)
 		
 		
 	
