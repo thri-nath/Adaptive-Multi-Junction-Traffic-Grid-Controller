@@ -1,7 +1,6 @@
-						# Adaptive Traffic Controller — System Architecture and Planning
+## Adaptive Traffic Controller — System Architecture and Planning
 
 1. System Overview & Design Objectives
-   
    1.1 System Overview
 
   	This project is an adaptive traffic controller for two four-way junctions, called Junction A and Junction B. Each junction controls four approaches (North,        South, East and West), 	which are grouped into two phases: North-South (NS) and East-West (EW). Each junction cycles through its phases in the usual green,        yellow and red sequence. The NS and EW phases of      	 a junction are never green at the same time, so conflicting traffic is always separated.
@@ -32,9 +31,9 @@
 
 ## 2.Top-Level Architecture & Block Diagram  
 
-	###High-Level System Architecture
+###High-Level System Architecture
 
-	![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram.svg)
+![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram.svg)
 		
 		
 	
