@@ -358,6 +358,30 @@ This partitioning provides:
 	Safe handling of asynchronous inputs and reset
     Easier future expansion of the traffic corridor
 
-The resulting design keeps the two junction controllers independent while allowing them to operate as a coordinated traffic system.		
+  The resulting design keeps the two junction controllers independent while allowing them to operate as a coordinated traffic system.
+  
+4. Clocking & Reset Strategy
+   
+ Clocking and Reset Strategy
+Single clock domain (clk). 
+	All FSMs, counters, and registers use one clock. Slow timing uses the tick enable, not derived clocks. This removes internal CDC.
+	
+External inputs are still asynchronous (emergency_in, both buttons, arst_n).
+	All of them pass through input_sync (2-FF) or reset_sync before use.
+	
+Reset choice:
+	active-low, asynchronous assert, synchronous de-assert. Flops use always @(posedge clk or negedge rst_n).
+	
+Why: the safe all-red state is forced immediately, even if clk is stopped or not yet running, which matters for a safety controller. Synchronous release 		avoids recovery/removal violations and mixed-state startup.
+
+Limit: the bridge does not filter noise on assertion. A noisy reset pin needs a filter at the pin.
+	Reset state: all-red, walk off, counters cleared, go_seen cleared. Startup holds STARTUP_RED for T_ALLRED ticks, then A begins NS green.
+
+Constraints to apply: the external arst_n is an async input (false path to data flops); recovery/removal checks apply downstream of the bridge
+
+5.Verification Plan
+
+
+
 	
 
