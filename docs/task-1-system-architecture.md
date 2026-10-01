@@ -381,6 +381,43 @@ Constraints to apply: the external arst_n is an async input (false path to data 
 
 5.Verification Plan
 
+ The architecture will be verified using a self-checking testbench with assertions for the defined safety and functional requirements and a reference model for traffic-light timing and coordination. Verification will cover reset behavior, normal sequencing, adaptive control, green-wave coordination, pedestrian requests, emergency handling, input synchronization, and regression testing.
+
+
+ ## Verification Plan — Testbench Scenarios
+
+| ID | Category | Scenario | Pass Criteria |
+|---|---|---|---|
+| T1 | Reset | Power-up reset | Lights remain all-red during reset; reset release is synchronized; FSMs enter `S_AR_EW2NS`. |
+| T2 | Reset | Reset during operation | Reset produces immediate all-red and clears counters, pending requests, triggers, and priority state. |
+| T3 | Sequencing | Junction A normal cycle | All phase durations and legal state transitions are correct. |
+| T4 | Sequencing | Junction B normal cycle | Junction B follows the defined sequence and responds correctly to Junction A triggers. |
+| T5 | Adaptive | Green extension | Current-direction demand extends green within the defined minimum/maximum limits. |
+| T6 | Adaptive | Cross-direction starvation | Waiting traffic eventually receives green after the current direction reaches its maximum. |
+| T7 | Robustness | Illegal-state recovery | An unused/illegal FSM state returns safely to `S_AR_EW2NS` without producing green. |
+| T8 | Green Wave | Green-wave offset | Junction B NS-green starts at the required offset from Junction A. |
+| T9 | Green Wave | Delay corner values | Zero, minimum, and maximum supported delay values maintain the required offset without unsafe overlap. |
+| T10 | Green Wave | B waits for synchronization | Junction B remains all-red until the required trigger and does not shorten its safety interval. |
+| T11 | Green Wave | Late trigger | A trigger received while B is already in NS green is ignored and does not affect the next cycle. |
+| T12 | Green Wave | Timeout and re-synchronization | B exits synchronization wait after timeout without deadlock and re-aligns when triggers return. |
+| T13 | Green Wave | Variable cycle length | B re-aligns to A each cycle without accumulated timing drift. |
+| T14 | Pedestrian | Single request at A | Correct pedestrian walk indication occurs during the designated pedestrian phase and the request is cleared. |
+| T15 | Pedestrian | Single request at B | Correct pedestrian indication occurs and green-wave coordination is restored afterward. |
+| T16 | Pedestrian | Both crossings at one junction | Both crossing requests are serviced in one pedestrian phase. |
+| T17 | Pedestrian | Simultaneous A/B requests | Arbitration follows `prio_sel`; priority alternates after each grant. |
+| T18 | Pedestrian | Fairness under load | A continuously requesting pedestrian does not prevent B from being serviced. |
+| T19 | Pedestrian | Held/bouncing button | A held or bouncing request results in the defined number of pedestrian services. |
+| T20 | Pedestrian | Request during another junction's walk | The request remains pending and is serviced after the current pedestrian service completes. |
+| T21 | Pedestrian | Grant without request | `ped_done` is generated correctly and the arbiter returns to idle without deadlock. |
+| T22 | Emergency | Emergency during green | Both junctions transition safely through yellow to all-red within the defined emergency bound. |
+| T23 | Emergency | Emergency in other states | Emergency handling satisfies the timing bound and immediately clears pedestrian WALK when required. |
+| T24 | Emergency | Emergency pulse | A one-cycle emergency input is latched for the required hold period and both FSMs enter emergency handling. |
+| T25 | Emergency | Emergency with simultaneous events | Emergency takes precedence without leaving stale grants, pulses, or synchronization triggers. |
+| T26 | Emergency | Emergency release/recovery | System returns through the defined recovery sequence and retained requests are handled correctly. |
+| T27 | Emergency | Requests during emergency | Pedestrian requests occurring during emergency are retained and serviced after recovery. |
+| T28 | Robustness | Asynchronous input skew | Synchronizers handle asynchronous input transitions correctly; CDC/static checks cover metastability concerns. |
+| T29 | Regression | Constrained-random regression | At least 100k cycles execute with zero assertion failures and the reference model agrees with the DUT. |
+
 
 
 	
