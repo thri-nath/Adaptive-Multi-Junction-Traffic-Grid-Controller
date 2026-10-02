@@ -366,7 +366,7 @@ This partitioning provides:
 Single clock domain (clk). 
 	All FSMs, counters, and registers use one clock. Slow timing uses the tick enable, not derived clocks. This removes internal CDC.
 	
-External inputs are still asynchronous (emergency_in, both buttons, arst_n).
+External inputs are still asynchronous (emergency_in, both buttons, rst_n).
 	All of them pass through input_sync (2-FF) or reset_sync before use.
 	
 Reset choice:
@@ -377,7 +377,7 @@ Why: the safe all-red state is forced immediately, even if clk is stopped or not
 Limit: the bridge does not filter noise on assertion. A noisy reset pin needs a filter at the pin.
 	Reset state: all-red, walk off, counters cleared, go_seen cleared. Startup holds STARTUP_RED for T_ALLRED ticks, then A begins NS green.
 
-Constraints to apply: the external arst_n is an async input (false path to data flops); recovery/removal checks apply downstream of the bridge
+Constraints to apply: the external rst_n is an async input (false path to data flops); recovery/removal checks apply downstream of the bridge
 
 5.Verification Plan
 
