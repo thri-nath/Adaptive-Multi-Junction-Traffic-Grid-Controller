@@ -32,7 +32,7 @@
 
 ## 2.Top-Level Architecture & Block Diagram  
 
-###High-Level System Architecture
+### High-Level System Architecture
 
 ![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram_v2.svg)
 
@@ -346,7 +346,7 @@ Unused codes (4'b1001 to 4'b1111) branch to S_AR_EW2NS so that an illegal state 
 
 Only one light state is active for a given direction at a time.
 
-####3.6 Architectural Summary
+#### 3.6 Architectural Summary
 
 The architecture intentionally separates normal traffic sequencing, inter-junction synchronization, emergency handling, pedestrian arbitration, and input conditioning.
 
@@ -379,11 +379,11 @@ Reset choice:
 Why: the safe all-red state is forced immediately, even if clk is stopped or not yet running, which matters for a safety controller. Synchronous release 		avoids recovery/removal violations and mixed-state startup.
 
 Limit: the bridge does not filter noise on assertion. A noisy reset pin needs a filter at the pin.
-	Reset state: all-red, walk off, counters cleared, go_seen cleared. Startup holds STARTUP_RED for T_ALLRED ticks, then A begins NS green.
+	Reset state: all-red, walk off, counters cleared, go_seen cleared. Startup holds S_AR_EW2NS for T_ALLRED ticks, then A begins NS green.
 
 Constraints to apply: the external rst_n is an async input (false path to data flops); recovery/removal checks apply downstream of the bridge
 
-5.Verification Plan
+## 5. Verification Plan
 
  The architecture will be verified using a self-checking testbench with assertions for the defined safety and functional requirements and a reference model for traffic-light timing and coordination. Verification will cover reset behavior, normal sequencing, adaptive control, green-wave coordination, pedestrian requests, emergency handling, input synchronization, and regression testing.
 
