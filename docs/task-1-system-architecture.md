@@ -35,6 +35,10 @@
 ###High-Level System Architecture
 
 ![Traffic System Top-Level Block Diagram](images/traffic_system_top_block_diagram_v2.svg)
+
+### FSM State Diagram
+
+![Traffic Controller FSM](images/fsm_diagram.svg)
 		
 3. Module Interfaces & Architectural Justification
 
