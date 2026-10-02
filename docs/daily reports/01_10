@@ -1,0 +1,8 @@
+01_10_26
+
+Thursday 
+
+ Today, I completed major sections of Task 1.
+I added the Module Interfaces & Architectural Justification, Clocking & Reset Strategy, and Verification Plan.
+I defined the RTL modules, interfaces, FSM states, reset and synchronization behavior, and created test scenarios
+covering sequencing, adaptive control, green-wave coordination, pedestrian handling, emergency operation, robustness, and regression testing.
