@@ -1,22 +1,24 @@
-module generic_timer (
+module generic_timer #(
+    parameter width = 4
+)(
     input wire clk,
     input wire start,
-    input wire [3:0] target,
+    input wire [width-1:0] target,
     input wire rst_n,
     output reg done
 );
 
-    reg [3:0] count;
+    reg [width-1:0] count;
     reg running;
 
     always @(posedge clk ) begin
         if (!rst_n) begin
-            count   <= 4'd0;
+            count   <= {width-1{1'b0}};
             done    <= 1'b0;
             running <= 1'b0;
         end else begin
             if (start) begin
-                count   <= 4'd1;
+                count   <= {{width-1{1'b0}}, 1'b1};
                 done    <= 1'b0;
                 running <= 1'b1;
             end else if (running) begin
@@ -24,7 +26,7 @@ module generic_timer (
                     done    <= 1'b1;
                     running <= 1'b0;
                 end else begin
-                    count   <= count + 4'd1;
+                    count   <= count + {{width-1{1'b0}}, 1'b1};
                     done    <= 1'b0;
                 end
             end else begin
