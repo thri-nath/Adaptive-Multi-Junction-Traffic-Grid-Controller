@@ -2,9 +2,9 @@ module generic_timer_tb;
  reg clk;
  reg start;
  reg rst_n;
- reg [3:0] target;
+ reg [7:0] target;
  wire done;
-     generic_timer dut ( .clk(clk), .start(start) , .rst_n(rst_n) , .target(target) , .done(done));
+ generic_timer #(.width(8)) dut ( .clk(clk), .start(start) , .rst_n(rst_n) , .target(target) , .done(done));
      
      always #10 clk = ~clk;
    initial begin 
@@ -53,12 +53,12 @@ module generic_timer_tb;
         // Scenario 4: Maximum Target Boundary Test (target = 15)
         @(negedge clk);
         start  = 1;
-        target = 15;
+        target = 25;
 
         @(negedge clk);
         start  = 0;
 
-        #340;
+        #500;
         // Scenario 5: Zero Target Edge Case (target = 0)
         @(negedge clk);
         start  = 1;
