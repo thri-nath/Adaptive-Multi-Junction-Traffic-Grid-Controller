@@ -1,0 +1,6 @@
+03_10_2026
+
+Saturday 
+
+Today, I started developing the Generic Timer Module RTL for the traffic controller. I worked on defining its functionality, inputs, outputs, timing parameters, and counter-based implementation. 
+The module is intended to provide reusable timing control for different traffic-light phases and system operations, supporting a modular and configurable RTL design.
