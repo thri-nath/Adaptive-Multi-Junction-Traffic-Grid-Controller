@@ -50,7 +50,7 @@ module generic_timer_tb;
 
         #200;
 
-        // Scenario 4: Maximum Target Boundary Test (target = 15)
+    // Scenario 4:  (target = 25)
         @(negedge clk);
         start  = 1;
         target = 25;
