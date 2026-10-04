@@ -1,0 +1,7 @@
+04_10_2026
+
+sunday 
+
+Today, I worked on the RTL and verification of the traffic controller modules.
+I implemented and refined the Input Synchronizer and Reset Synchronizer modules and developed their respective testbenches. 
+I also worked on the Pedestrian Arbiter and Green-Wave Delay verification, while refining reset and sequential logic for reliable synchronous operation.
