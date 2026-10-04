@@ -13,7 +13,7 @@ module shared_pedestrian_arbiter(
     output reg prio_sel
 );
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk ) begin
 
         if (!rst_n) begin
             grant_A <= 1'b0;
