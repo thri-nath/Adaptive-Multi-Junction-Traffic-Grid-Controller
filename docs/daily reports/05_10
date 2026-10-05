@@ -1,0 +1,7 @@
+05_10_2026
+
+Monday
+
+Today, I learned about self-checking testbenches in Verilog.
+I studied how a testbench can automatically compare the DUT's actual output with the expected output and generate PASS/FAIL messages using conditional checks and `$display`.
+I also learned how Verilog `task` can be used to make these checks reusable and reduce repeated code.
