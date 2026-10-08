@@ -1,0 +1,7 @@
+08_10_2026
+
+Thrusday 
+
+I completed most of Task 2–3 RTL, including the FSM, generic timer, pedestrian arbiter, emergency controller, synchronization modules, green-wave delay,
+top module, testbenches, and simulation waveforms. Today, I started Task 4 by planning adaptive traffic-density timing, minimum/maximum green limits, and verification. 
+Next, I’ll implement the changes in the FSM and top module.
