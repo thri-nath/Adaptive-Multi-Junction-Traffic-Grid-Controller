@@ -2,6 +2,7 @@ module junction_fsm #(
     parameter IS_MASTER    = 1,
     parameter MIN_GREEN    = 10,
     parameter MAX_GREEN    = 30,
+    parameter GREEN_EXTENSION = 4,
     parameter YELLOW_TIME  = 3,
     parameter ALL_RED_TIME = 2,
     parameter PED_TIME     = 5,
@@ -12,6 +13,8 @@ module junction_fsm #(
 
     input wire       sens_NS,
     input wire       sens_EW,
+    input wire [2:0] traffic_density_NS,
+    input wire [2:0] traffic_density_EW,
 
     input wire [1:0] ped_req,
     input wire       ped_grant,
@@ -57,6 +60,21 @@ module junction_fsm #(
 
     wire timer_start;
     wire timer_done;
+
+    function [TIMER_WIDTH-1:0] calc_green_target;
+        input [2:0] density;
+        integer calculated_target;
+        begin
+            calculated_target = MIN_GREEN + (density * GREEN_EXTENSION);
+
+            if (calculated_target > MAX_GREEN)
+                calc_green_target = MAX_GREEN;
+            else if (calculated_target < MIN_GREEN)
+                calc_green_target = MIN_GREEN;
+            else
+                calc_green_target = calculated_target;
+        end
+    endfunction
 
     assign timer_start = (state != previous_state);
 
@@ -204,12 +222,8 @@ module junction_fsm #(
 
                 case (next_state)
 
-                    S_NS_GREEN: begin
-                        if (sens_NS && !sens_EW)
-                            phase_target <= MAX_GREEN;
-                        else
-                            phase_target <= MIN_GREEN;
-                    end
+                    S_NS_GREEN:
+                        phase_target <= calc_green_target(traffic_density_NS);
 
                     S_NS_YELLOW:
                         phase_target <= YELLOW_TIME;
@@ -217,12 +231,8 @@ module junction_fsm #(
                     S_AR_NS2EW:
                         phase_target <= ALL_RED_TIME;
 
-                    S_EW_GREEN: begin
-                        if (sens_EW && !sens_NS)
-                            phase_target <= MAX_GREEN;
-                        else
-                            phase_target <= MIN_GREEN;
-                    end
+                    S_EW_GREEN:
+                        phase_target <= calc_green_target(traffic_density_EW);
 
                     S_EW_YELLOW:
                         phase_target <= YELLOW_TIME;
