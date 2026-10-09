@@ -1,3 +1,4 @@
+
 `timescale 1ns/1ps
 
 module junction_fsm_tb;
@@ -7,6 +8,9 @@ module junction_fsm_tb;
 
     reg sens_NS;
     reg sens_EW;
+
+    reg [2:0] traffic_density_NS;
+    reg [2:0] traffic_density_EW;
 
     reg [1:0] ped_req;
     reg ped_grant;
@@ -27,6 +31,7 @@ module junction_fsm_tb;
         .IS_MASTER(1),
         .MIN_GREEN(5),
         .MAX_GREEN(10),
+        .GREEN_EXTENSION(1),
         .YELLOW_TIME(2),
         .ALL_RED_TIME(2),
         .PED_TIME(3),
@@ -37,6 +42,9 @@ module junction_fsm_tb;
 
         .sens_NS(sens_NS),
         .sens_EW(sens_EW),
+
+        .traffic_density_NS(traffic_density_NS),
+        .traffic_density_EW(traffic_density_EW),
 
         .ped_req(ped_req),
         .ped_grant(ped_grant),
@@ -57,80 +65,125 @@ module junction_fsm_tb;
     always #10 clk = ~clk;
 
     initial begin
-
         clk = 0;
         rst_n = 0;
 
         sens_NS = 0;
         sens_EW = 0;
 
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
+
         ped_req = 2'b00;
         ped_grant = 0;
 
         green_wave_trigger = 0;
         emergency_active = 0;
 
-        // Reset
+        // T1: Reset
         #40;
         rst_n = 1;
 
-        // NS traffic
+        // T2: Normal NS traffic, minimum density
         sens_NS = 1;
         sens_EW = 0;
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
 
         #200;
 
-        // EW traffic
+        // T3: EW traffic, high EW density
         sens_NS = 0;
         sens_EW = 1;
+        traffic_density_NS = 0;
+        traffic_density_EW = 7;
 
-        #200;
+        #250;
 
-        // Pedestrian request
+        // T4: Pedestrian request
         ped_req = 2'b01;
-
         #20;
         ped_req = 2'b00;
 
         // Allow FSM to reach all-red
         #100;
 
-        // Pedestrian grant
+        // T5: Pedestrian grant
         ped_grant = 1;
-
         #20;
         ped_grant = 0;
 
         #100;
 
-        // Emergency
+        // T6: Emergency activation
         emergency_active = 1;
-
         #100;
 
-        // Release emergency
+        // T7: Emergency release
         emergency_active = 0;
-
         #100;
 
-        // Green wave trigger
+        // T8: Green-wave trigger
         green_wave_trigger = 1;
-
         #20;
         green_wave_trigger = 0;
 
         #100;
 
-        // Reset during operation
-        rst_n = 0;
+        // T9: NS green with density 1
+        traffic_density_NS = 1;
+        traffic_density_EW = 1;
+        #250;
 
+        // T10: NS green with density 3
+        traffic_density_NS = 3;
+        #250;
+
+        // T11: NS green with density 5
+        traffic_density_NS = 5;
+        #250;
+
+        // T12: Maximum NS density
+        traffic_density_NS = 7;
+        #300;
+
+        // T13: Minimum EW density
+        traffic_density_EW = 0;
+        #250;
+
+        // T14: Maximum density in both directions
+        traffic_density_NS = 7;
+        traffic_density_EW = 7;
+        #400;
+
+        // T15: Density changes during operation
+        traffic_density_NS = 2;
+        traffic_density_EW = 2;
+        #40;
+
+        traffic_density_NS = 7;
+        traffic_density_EW = 7;
+        #300;
+
+        // T16: Return to minimum density
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
+        #300;
+
+        // T17: Reset during operation
+        rst_n = 0;
         #40;
         rst_n = 1;
 
-        #200;
+        // T18: Verify operation after reset
+        traffic_density_NS = 7;
+        traffic_density_EW = 3;
+        sens_NS = 1;
+        sens_EW = 0;
+
+        #300;
 
         $finish;
-
     end
 
 endmodule

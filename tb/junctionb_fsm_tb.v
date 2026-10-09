@@ -1,3 +1,4 @@
+
 `timescale 1ns/1ps
 
 module junctionb_fsm_tb;
@@ -7,6 +8,9 @@ module junctionb_fsm_tb;
 
     reg sens_NS;
     reg sens_EW;
+
+    reg [2:0] traffic_density_NS;
+    reg [2:0] traffic_density_EW;
 
     reg [1:0] ped_req;
     reg ped_grant;
@@ -27,6 +31,7 @@ module junctionb_fsm_tb;
         .IS_MASTER(0),
         .MIN_GREEN(5),
         .MAX_GREEN(10),
+        .GREEN_EXTENSION(1),
         .YELLOW_TIME(2),
         .ALL_RED_TIME(2),
         .PED_TIME(3),
@@ -37,6 +42,9 @@ module junctionb_fsm_tb;
 
         .sens_NS(sens_NS),
         .sens_EW(sens_EW),
+
+        .traffic_density_NS(traffic_density_NS),
+        .traffic_density_EW(traffic_density_EW),
 
         .ped_req(ped_req),
         .ped_grant(ped_grant),
@@ -57,101 +65,133 @@ module junctionb_fsm_tb;
     always #10 clk = ~clk;
 
     initial begin
-
         clk = 0;
         rst_n = 0;
 
         sens_NS = 0;
         sens_EW = 0;
 
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
+
         ped_req = 2'b00;
         ped_grant = 0;
 
         green_wave_trigger = 0;
         emergency_active = 0;
 
-        // Reset
+        // T1: Reset
         #40;
         rst_n = 1;
 
-        // NS heavy traffic
+        // T2: NS traffic with minimum density
         sens_NS = 1;
         sens_EW = 0;
-
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
         #200;
 
-        // EW heavy traffic
+        // T3: EW traffic with maximum density
         sens_NS = 0;
         sens_EW = 1;
+        traffic_density_NS = 0;
+        traffic_density_EW = 7;
+        #250;
 
-        #100;
-
-        // Pedestrian request for EW crossing
+        // T4: Pedestrian request
         ped_req = 2'b01;
-
         #20;
         ped_req = 2'b00;
-
-        // Grant pedestrian request
-        #80;
-        ped_grant = 1;
-
         #100;
+
+        // T5: Pedestrian grant
+        ped_grant = 1;
+        #20;
         ped_grant = 0;
+        #100;
 
-        // Normal operation
-        #300;
-
-        // Both pedestrian requests
+        // T6: Both pedestrian requests
         ped_req = 2'b11;
-
         #20;
         ped_req = 2'b00;
-
-        // Grant both crossings
         #80;
         ped_grant = 1;
-
         #100;
         ped_grant = 0;
+        #200;
 
-        // Allow normal operation
-        #300;
+        // T7: Emergency activation
+        emergency_active = 1;
+        #100;
 
-        // Green-wave trigger
+        // T8: Emergency release
+        emergency_active = 0;
+        #100;
+
+        // T9: Green-wave trigger
         green_wave_trigger = 1;
-
         #20;
         green_wave_trigger = 0;
+        #150;
 
-        #100;
+        // T10: Intermediate density
+        traffic_density_NS = 1;
+        traffic_density_EW = 1;
+        #250;
 
-        // Emergency during operation
-        emergency_active = 1;
+        // T11: NS density 3
+        traffic_density_NS = 3;
+        #250;
 
-        #100;
+        // T12: NS density 5
+        traffic_density_NS = 5;
+        #250;
 
-        // Release emergency
-        emergency_active = 0;
-
-        #200;
-
-        // Low traffic
-        sens_NS = 0;
-        sens_EW = 0;
-
+        // T13: Maximum NS density
+        traffic_density_NS = 7;
         #300;
 
-        // Reset during operation
-        rst_n = 0;
+        // T14: Minimum EW density
+        traffic_density_EW = 0;
+        #250;
 
+        // T15: Maximum density in both directions
+        traffic_density_NS = 7;
+        traffic_density_EW = 7;
+        #400;
+
+        // T16: Change density during operation
+        traffic_density_NS = 2;
+        traffic_density_EW = 2;
+        #40;
+        traffic_density_NS = 7;
+        traffic_density_EW = 7;
+        #300;
+
+        // T17: Return to minimum density
+        traffic_density_NS = 0;
+        traffic_density_EW = 0;
+        #300;
+
+        // T18: Low traffic in both directions
+        sens_NS = 0;
+        sens_EW = 0;
+        #300;
+
+        // T19: Reset during operation
+        rst_n = 0;
         #40;
         rst_n = 1;
+        #100;
 
-        #200;
+        // T20: Verify operation after reset
+        sens_NS = 1;
+        sens_EW = 0;
+        traffic_density_NS = 7;
+        traffic_density_EW = 3;
+        #300;
 
         $finish;
-
     end
 
 endmodule
