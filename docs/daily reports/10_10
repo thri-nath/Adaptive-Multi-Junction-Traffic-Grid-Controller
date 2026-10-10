@@ -1,0 +1,6 @@
+10_10_2026
+
+Saturday 
+
+Today, I refined the FSM diagram for the Adaptive Multi-Junction Traffic Grid Controller and removed the outdated diagram file from the repository.
+I also focused on learning self-checking testbenches, understanding how to automate verification by comparing expected and actual outputs, detecting mismatches, and improving the reliability of RTL module testing.
