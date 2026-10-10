@@ -38,7 +38,7 @@
 
 ### FSM State Diagram
 
-![Traffic Controller FSM](images/fsm_diagram.svg)
+![Traffic Controller FSM](images/function_fsm_state_diagram.svg)
 		
 3. Module Interfaces & Architectural Justification
 
