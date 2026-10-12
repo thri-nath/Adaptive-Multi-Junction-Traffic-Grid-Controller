@@ -681,3 +681,8 @@ OVERALL RESULT: PASS
 $finish called at time : 13411 ns 
 
 
+## Conclusion
+
+The generic timer module was verified using a self-checking testbench in Xilinx Vivado XSim with a 20 ns clock period. The testbench covered reset behavior, timer completion for different target values, counter wraparound, restart behavior, and changes to the target during counting. A total of 636 checks passed with 0 failures. The simulation completed successfully, and the recorded results indicate that the module passed the tested scenarios. The generic timer is ready for integration testing with the other traffic controller modules.
+
+
