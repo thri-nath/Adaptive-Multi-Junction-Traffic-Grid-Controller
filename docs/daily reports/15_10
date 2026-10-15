@@ -1,0 +1,8 @@
+15_10_2026
+
+Thrusday 
+
+Today, I completed self-checking verification of the `green_wave_delay` module using Xilinx Vivado XSim with a 20 ns clock period. 
+I tested reset behavior, normal delay operation, output clearing, cancellation of a pending delay, and restarting after clearing. 
+The simulation waveform showed zero recorded testbench errors. 
+I reviewed the results and will document the verification report and waveform in the GitHub repository.
