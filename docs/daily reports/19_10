@@ -1,0 +1,8 @@
+
+19_10_2026
+
+Monday 
+
+Today, I completed self-checking verification of the shared_pedestrian_arbiter module using Xilinx Vivado XSim with a 20 ns clock period.
+I tested pedestrian request arbitration, grant retention, priority alternation, emergency handling, reset behavior, and idle operation.
+After correcting two testbench expectations, all 29 checks passed with zero failures. I also added the verification report to the GitHub repository.
