@@ -1,0 +1,10 @@
+21_10_2026
+
+Wednesday
+
+**21/10/2026 (Wednesday)**
+
+Today, I completed the self-checking verification of the `junction_fsm` module using Xilinx Vivado XSim with a 20 ns clock period.
+I tested traffic-light sequencing, adaptive green timing based on traffic density, green-wave coordination, pedestrian request handling, emergency operation, and reset behavior. 
+The automated regression performed 41 checks with zero reported errors, and all tests passed.
+I documented the verification results and confirmed the module's behavior for the tested master-mode scenarios.
