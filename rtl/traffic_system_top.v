@@ -11,6 +11,11 @@ module traffic_system_top #(
     input wire sens_B_NS,
     input wire sens_B_EW,
 
+    input wire [2:0] traffic_density_A_NS,
+    input wire [2:0] traffic_density_A_EW,
+    input wire [2:0] traffic_density_B_NS,
+    input wire [2:0] traffic_density_B_EW,
+
     input wire ped_req_A_NS,
     input wire ped_req_A_EW,
     input wire ped_req_B_NS,
@@ -34,6 +39,11 @@ module traffic_system_top #(
     wire sens_A_EW_sync;
     wire sens_B_NS_sync;
     wire sens_B_EW_sync;
+
+    wire [2:0] density_A_NS_sync;
+    wire [2:0] density_A_EW_sync;
+    wire [2:0] density_B_NS_sync;
+    wire [2:0] density_B_EW_sync;
 
     wire emergency_in_sync;
 
@@ -94,6 +104,42 @@ module traffic_system_top #(
     );
 
     input_sync #(
+        .WIDTH(3)
+    ) density_A_NS_sync_inst (
+        .clk      (clk),
+        .rst_n    (rst_n_sync),
+        .async_in (traffic_density_A_NS),
+        .sync_out (density_A_NS_sync)
+    );
+
+    input_sync #(
+        .WIDTH(3)
+    ) density_A_EW_sync_inst (
+        .clk      (clk),
+        .rst_n    (rst_n_sync),
+        .async_in (traffic_density_A_EW),
+        .sync_out (density_A_EW_sync)
+    );
+
+    input_sync #(
+        .WIDTH(3)
+    ) density_B_NS_sync_inst (
+        .clk      (clk),
+        .rst_n    (rst_n_sync),
+        .async_in (traffic_density_B_NS),
+        .sync_out (density_B_NS_sync)
+    );
+
+    input_sync #(
+        .WIDTH(3)
+    ) density_B_EW_sync_inst (
+        .clk      (clk),
+        .rst_n    (rst_n_sync),
+        .async_in (traffic_density_B_EW),
+        .sync_out (density_B_EW_sync)
+    );
+
+    input_sync #(
         .WIDTH(1)
     ) emergency_sync_inst (
         .clk      (clk),
@@ -147,6 +193,7 @@ module traffic_system_top #(
         .IS_MASTER    (1),
         .MIN_GREEN    (10),
         .MAX_GREEN    (30),
+        .GREEN_EXTENSION (4),
         .YELLOW_TIME  (3),
         .ALL_RED_TIME (2),
         .PED_TIME     (5),
@@ -156,6 +203,8 @@ module traffic_system_top #(
         .rst_n              (rst_n_sync),
         .sens_NS            (sens_A_NS_sync),
         .sens_EW            (sens_A_EW_sync),
+        .traffic_density_NS (density_A_NS_sync),
+        .traffic_density_EW (density_A_EW_sync),
         .ped_req            (ped_req_A_sync),
         .ped_grant          (ped_grant_A),
         .green_wave_trigger (1'b0),
@@ -182,6 +231,7 @@ module traffic_system_top #(
         .IS_MASTER    (0),
         .MIN_GREEN    (10),
         .MAX_GREEN    (30),
+        .GREEN_EXTENSION (4),
         .YELLOW_TIME  (3),
         .ALL_RED_TIME (2),
         .PED_TIME     (5),
@@ -191,6 +241,8 @@ module traffic_system_top #(
         .rst_n              (rst_n_sync),
         .sens_NS            (sens_B_NS_sync),
         .sens_EW            (sens_B_EW_sync),
+        .traffic_density_NS (density_B_NS_sync),
+        .traffic_density_EW (density_B_EW_sync),
         .ped_req            (ped_req_B_sync),
         .ped_grant          (ped_grant_B),
         .green_wave_trigger (green_wave_trigger_B),
