@@ -55,7 +55,29 @@ module input_sync_tb_Self;
         // Release reset
         @(negedge clk);
         rst_n = 1;
+         
+         // Test: Asynchronous change between clock edges
+@(negedge clk);
+async_in = 4'b0010;
 
+#2;
+check_output(4'b0000, "Async change - no immediate output");
+
+@(posedge clk);
+#1;
+check_output(4'b0000, "Async change - Stage 1");
+
+@(posedge clk);
+#1;
+check_output(4'b0010, "Async change - Stage 2");
+
+ // Restore input and flush synchronizer pipeline
+@(negedge clk);
+async_in = 4'b0000;
+
+repeat (2) @(posedge clk);
+#1;
+check_output(4'b0000, "Pipeline cleared before rising test");
         // Test 2: Rising input
         async_in = 4'b0001;
 
