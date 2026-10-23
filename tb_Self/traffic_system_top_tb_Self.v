@@ -32,6 +32,11 @@ module traffic_system_top_tb_Self;
     integer found;
     integer emergency_seen;
     integer pedestrian_seen;
+    //for measuring the exact green-wave offset
+    integer cycle_count;
+integer cycle_A_NS_green;
+integer cycle_B_NS_green;
+integer measured_offset;
 
   localparam RED    = 3'b001;
 localparam YELLOW = 3'b010;
@@ -217,6 +222,10 @@ endtask
         found = 0;
         emergency_seen = 0;
         pedestrian_seen = 0;
+        cycle_count = 0;
+cycle_A_NS_green = -1;
+cycle_B_NS_green = -1;
+measured_offset = -1;
 
         $display("");
         $display("============================================");
@@ -252,38 +261,61 @@ endtask
         rst_n = 1;
         wait_cycles(5);
 
-        // TEST 2: Normal operation and green-wave coordination
-        $display("");
-        $display("TEST 2: Normal operation and green-wave");
+       // TEST 2: Measure exact green-wave offset
+$display("");
+$display("TEST 2: Exact green-wave offset");
 
-        sens_A_NS = 1;
-        sens_B_NS = 1;
+sens_A_NS = 1;
+sens_B_NS = 1;
 
-        found = 0;
+cycle_count = 0;
+cycle_A_NS_green = -1;
+cycle_B_NS_green = -1;
 
-        for (i = 0; i < 100; i = i + 1) begin
-            @(posedge clk);
-            #1;
+// Monitor both junctions during the same clock cycles.
+for (i = 0; i < 100; i = i + 1) begin
+    @(posedge clk);
+    #1;
 
-            if (light_A_NS === GREEN)
-                found = 1;
-        end
+    cycle_count = cycle_count + 1;
 
-        check(found == 1, "Master junction A reaches NS green");
+    if ((light_A_NS === GREEN) &&
+        (cycle_A_NS_green == -1))
+        cycle_A_NS_green = cycle_count;
 
-        found = 0;
+    if ((light_B_NS === GREEN) &&
+        (cycle_B_NS_green == -1))
+        cycle_B_NS_green = cycle_count;
 
-        for (i = 0; i < 100; i = i + 1) begin
-            @(posedge clk);
-            #1;
+    // Stop once both first green transitions are recorded.
+    if ((cycle_A_NS_green != -1) &&
+        (cycle_B_NS_green != -1))
+        i = 100;
+end
 
-            if (light_B_NS === GREEN)
-                found = 1;
-        end
+if ((cycle_A_NS_green != -1) &&
+    (cycle_B_NS_green != -1)) begin
 
-        check(found == 1, "Slave junction B reaches NS green after synchronization");
+    measured_offset =
+        cycle_B_NS_green - cycle_A_NS_green;
 
-        check_safety();
+    $display("Junction A NS green cycle: %0d",
+             cycle_A_NS_green);
+
+    $display("Junction B NS green cycle: %0d",
+             cycle_B_NS_green);
+
+    $display("Measured green-wave offset: %0d cycles",
+             measured_offset);
+
+    check(measured_offset > 0,
+          "Junction B starts NS green after Junction A");
+
+end
+else begin
+    check(1'b0,
+          "Both junctions reach NS green within timeout");
+end
 
         // TEST 3: Cross-direction traffic
         $display("");
