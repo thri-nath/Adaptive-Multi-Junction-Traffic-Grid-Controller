@@ -41,6 +41,10 @@
  INPUT SYNC AUTOMATED TESTBENCH
 -----------------------------------
 PASS: Reset
+PASS: Async change - no immediate output
+PASS: Async change - Stage 1
+PASS: Async change - Stage 2
+PASS: Pipeline cleared before rising test
 PASS: Rising input - Stage 1
 PASS: Rising input - Stage 2
 PASS: Falling input - Stage 1
@@ -51,7 +55,7 @@ PASS: Reset clears output
 -----------------------------------
 ALL TESTS PASSED
 -----------------------------------
-$finish called at time : 171 ns
+$finish called at time : 271 ns 
 ```
 
 ## Conclusion
