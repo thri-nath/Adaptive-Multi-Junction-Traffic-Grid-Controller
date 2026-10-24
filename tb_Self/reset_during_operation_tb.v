@@ -205,18 +205,17 @@ module reset_during_operation_tb;
         // Confirm that the design continues operating after reset.
         wait_for_A_state(S_NS_GREEN, 150);
 
-        if (errors == 0) begin
-            $display("------------------------------------------");
-            $display("RESET TEST RESULT: PASS");
-            $display("Checks=%0d Errors=%0d", checks, errors);
-            $display("------------------------------------------");
-        end
-        else begin
-            $display("------------------------------------------");
-            $display("RESET TEST RESULT: FAIL");
-            $display("Checks=%0d Errors=%0d", checks, errors);
-            $display("------------------------------------------");
-        end
+               $display("------------------------------------------");
+        $display("RESET TEST SUMMARY");
+        $display("Checks performed: %0d", checks);
+        $display("Errors detected : %0d", errors);
+
+        if (errors == 0)
+            $display("ALL TESTS PASSED");
+        else
+            $display("TESTS FAILED");
+
+        $display("------------------------------------------");
 
         $finish;
     end

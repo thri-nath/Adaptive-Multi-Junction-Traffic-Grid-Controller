@@ -533,18 +533,17 @@ end
 
         check_safety();
 
-        // Final summary
+               // Final summary
         $display("");
         $display("============================================");
-        $display(" REGRESSION SUMMARY");
+        $display(" TRAFFIC SYSTEM TOP TEST SUMMARY");
         $display(" Checks performed : %0d", checks);
         $display(" Errors detected  : %0d", errors);
-        $display("============================================");
 
         if (errors == 0)
-            $display(" RESULT: ALL CHECKS PASSED");
+            $display("ALL TESTS PASSED");
         else
-            $display(" RESULT: FAILURES DETECTED");
+            $display("TESTS FAILED");
 
         $display("============================================");
 

@@ -127,11 +127,18 @@ module pedestrian_fairness_120_tb;
         $display("Junction A grants: %0d", grants_A);
         $display("Junction B grants: %0d", grants_B);
 
-        if (errors == 0)
-            $display("PASS: 120-request fairness test");
-        else
-            $display("FAIL: Errors=%0d", errors);
+               $display("----------------------------------------");
+        $display("PEDESTRIAN FAIRNESS TEST SUMMARY");
+        $display("Requests tested: 120");
+        $display("Errors detected: %0d", errors);
 
+        if (errors == 0)
+            $display("ALL TESTS PASSED");
+        else
+            $display("TESTS FAILED");
+
+        $display("----------------------------------------");
+   
         $finish;
     end
 

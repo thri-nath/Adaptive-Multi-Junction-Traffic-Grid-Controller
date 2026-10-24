@@ -364,18 +364,17 @@ module junction_fsm_tb_Self;
               "Pedestrian output remains clear after reset");
 
         // FINAL SUMMARY
-        $display("");
-        $display("============================================");
-        $display(" REGRESSION SUMMARY");
-        $display(" Checks performed: %0d", checks);
-        $display(" Errors detected : %0d", errors);
+               $display("----------------------------------------");
+        $display("REGRESSION SUMMARY");
+        $display("Checks performed: %0d", checks);
+        $display("Errors detected : %0d", errors);
 
         if (errors == 0)
-            $display(" RESULT: ALL CHECKS PASSED");
+            $display("ALL TESTS PASSED");
         else
-            $display(" RESULT: REGRESSION FAILED");
+            $display("TESTS FAILED");
 
-        $display("============================================");
+        $display("----------------------------------------");
 
         #20;
         $finish;

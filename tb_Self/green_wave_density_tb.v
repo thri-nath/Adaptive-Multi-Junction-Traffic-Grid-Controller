@@ -214,18 +214,18 @@ module green_wave_density_tb;
         run_density_test(4, 3'd4, 3'd3, 26);
         run_density_test(5, 3'd7, 3'd5, 30);
 
-        $display("");
-        $display("========================================");
+               $display("----------------------------------------");
+        $display("GREEN-WAVE DENSITY TEST SUMMARY");
         $display("Density duration checks passed: %0d/5",
                  test_count);
         $display("Total errors: %0d", errors);
 
         if (errors == 0)
-            $display("GREEN-WAVE DENSITY TEST: PASS");
+            $display("ALL TESTS PASSED");
         else
-            $display("GREEN-WAVE DENSITY TEST: FAIL");
+            $display("TESTS FAILED");
 
-        $display("========================================");
+        $display("----------------------------------------");
         $finish;
     end
 

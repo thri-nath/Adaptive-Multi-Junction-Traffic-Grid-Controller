@@ -442,18 +442,17 @@ module junctionb_FSM_tb_Self;
               "Post-reset density target clamps at MAX_GREEN");
 
         // FINAL SUMMARY
-        $display("");
-        $display("============================================");
-        $display(" REGRESSION SUMMARY");
-        $display(" Checks performed: %0d", checks);
-        $display(" Errors detected : %0d", errors);
+                $display("----------------------------------------");
+        $display("REGRESSION SUMMARY");
+        $display("Checks performed: %0d", checks);
+        $display("Errors detected : %0d", errors);
 
         if (errors == 0)
-            $display(" RESULT: ALL CHECKS PASSED");
+            $display("ALL TESTS PASSED");
         else
-            $display(" RESULT: REGRESSION FAILED");
+            $display("TESTS FAILED");
 
-        $display("============================================");
+        $display("----------------------------------------");
 
         #20;
         $finish;
