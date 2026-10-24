@@ -1,0 +1,700 @@
+Testbench: generic_timer_tb_Self.v
+Top module: generic_timer_tb_Self
+Started: 10/25/2026 00:06:18
+
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/emergency_controller.v" into library work
+INFO: [VRFC 10-311] analyzing module emergency_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/generic_timer.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_timer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/green_wave_delay.v" into library work
+INFO: [VRFC 10-311] analyzing module green_wave_delay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/input_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module input_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/junction_fsm.v" into library work
+INFO: [VRFC 10-311] analyzing module junction_fsm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/reset_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module reset_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/shared_pedestrian_arbiter.v" into library work
+INFO: [VRFC 10-311] analyzing module shared_pedestrian_arbiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/traffic_system_top.v" into library work
+INFO: [VRFC 10-311] analyzing module traffic_system_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/generic_timer_tb_Self.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_timer_tb_Self
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe generic_timer_tb_Self -s sim_generic_timer_tb_Self 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.generic_timer(width=8)
+Compiling module work.generic_timer_tb_Self
+Built simulation snapshot sim_generic_timer_tb_Self
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 00:06:22 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim_generic_timer_tb_Self/xsim_script.tcl
+# xsim {sim_generic_timer_tb_Self} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+====================================
+GENERIC TIMER SELF-CHECKING TEST
+====================================
+PASS: Initial reset | expected=0 actual=0
+PASS: Start ignored during reset | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: Target 1 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 9 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 25 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 32 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 10 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 8 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 3 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Maximum target 255 | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: done is low after start | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: done remains low before target | expected=0 actual=0
+PASS: Target 0 counter wraparound | expected=1 actual=1
+PASS: done clears after completion | expected=0 actual=0
+PASS: Reset clears done | expected=0 actual=0
+PASS: Reset test started | expected=0 actual=0
+PASS: Timer still counting | expected=0 actual=0
+PASS: Reset cancels active timer | expected=0 actual=0
+PASS: Timer stays idle after reset | expected=0 actual=0
+PASS: Reset clears done | expected=0 actual=0
+PASS: Held start keeps done low | expected=0 actual=0
+PASS: Held start restarts counter | expected=0 actual=0
+PASS: Held start timer completes after release | expected=1 actual=1
+PASS: Reset clears done | expected=0 actual=0
+PASS: Active timer before restart | expected=0 actual=0
+PASS: Restart clears done | expected=0 actual=0
+PASS: Restarted timer still counting | expected=0 actual=0
+PASS: Restart with target 3 completes | expected=1 actual=1
+PASS: Reset clears done | expected=0 actual=0
+PASS: Changed target not reached yet | expected=0 actual=0
+PASS: Changed target completes at 4 | expected=1 actual=1
+====================================
+TEST SUMMARY
+PASS: 636
+FAIL: 0
+====================================
+OVERALL RESULT: PASS
+$finish called at time : 13411 ns : File "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/generic_timer_tb_Self.v" Line 256
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 00:06:23 2026...
+

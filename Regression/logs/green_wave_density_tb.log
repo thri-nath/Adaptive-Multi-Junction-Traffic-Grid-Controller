@@ -1,0 +1,125 @@
+Testbench: green_wave_density_tb.v
+Top module: green_wave_density_tb
+Started: 10/25/2026 00:06:29
+
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/emergency_controller.v" into library work
+INFO: [VRFC 10-311] analyzing module emergency_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/generic_timer.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_timer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/green_wave_delay.v" into library work
+INFO: [VRFC 10-311] analyzing module green_wave_delay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/input_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module input_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/junction_fsm.v" into library work
+INFO: [VRFC 10-311] analyzing module junction_fsm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/reset_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module reset_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/shared_pedestrian_arbiter.v" into library work
+INFO: [VRFC 10-311] analyzing module shared_pedestrian_arbiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/traffic_system_top.v" into library work
+INFO: [VRFC 10-311] analyzing module traffic_system_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/green_wave_density_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module green_wave_density_tb
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe green_wave_density_tb -s sim_green_wave_density_tb 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 3 for port 'target' [C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/green_wave_delay.v:23]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.reset_sync
+Compiling module work.input_sync
+Compiling module work.input_sync(WIDTH=3)
+Compiling module work.input_sync(WIDTH=2)
+Compiling module work.emergency_controller
+Compiling module work.shared_pedestrian_arbiter
+Compiling module work.generic_timer(width=16)
+Compiling module work.junction_fsm
+Compiling module work.generic_timer(width=3)
+Compiling module work.green_wave_delay_default
+Compiling module work.traffic_system_top
+Compiling module work.green_wave_density_tb
+Built simulation snapshot sim_green_wave_density_tb
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 00:06:33 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim_green_wave_density_tb/xsim_script.tcl
+# xsim {sim_green_wave_density_tb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+========================================
+ GREEN-WAVE DENSITY SELF-CHECKING TEST
+========================================
+
+----------------------------------------
+Density test 1
+A NS density = 0
+B NS density = 0
+Expected A green duration = 10 cycles
+INFO: A NS green observed at 231000
+Measured A NS green = 12 cycles
+PASS: A green duration is within tolerance
+INFO: Junction B NS green observed
+
+----------------------------------------
+Density test 2
+A NS density = 1
+B NS density = 2
+Expected A green duration = 14 cycles
+INFO: A NS green observed at 711000
+Measured A NS green = 16 cycles
+PASS: A green duration is within tolerance
+INFO: Junction B NS green observed
+
+----------------------------------------
+Density test 3
+A NS density = 2
+B NS density = 1
+Expected A green duration = 18 cycles
+INFO: A NS green observed at 1271000
+Measured A NS green = 20 cycles
+PASS: A green duration is within tolerance
+INFO: Junction B NS green observed
+
+----------------------------------------
+Density test 4
+A NS density = 4
+B NS density = 3
+Expected A green duration = 26 cycles
+INFO: A NS green observed at 1911000
+Measured A NS green = 28 cycles
+PASS: A green duration is within tolerance
+INFO: Junction B NS green observed
+
+----------------------------------------
+Density test 5
+A NS density = 7
+B NS density = 5
+Expected A green duration = 30 cycles
+INFO: A NS green observed at 2711000
+Measured A NS green = 32 cycles
+PASS: A green duration is within tolerance
+INFO: Junction B NS green observed
+----------------------------------------
+GREEN-WAVE DENSITY TEST SUMMARY
+Density duration checks passed: 5/5
+Total errors: 0
+ALL TESTS PASSED
+----------------------------------------
+$finish called at time : 3371 ns : File "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/green_wave_density_tb.v" Line 229
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 00:06:35 2026...
+

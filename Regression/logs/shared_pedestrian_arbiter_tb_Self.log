@@ -1,0 +1,92 @@
+Testbench: shared_pedestrian_arbiter_tb_Self.v
+Top module: shared_pedestrian_arbiter_tb_Self
+Started: 10/25/2026 00:07:07
+
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/emergency_controller.v" into library work
+INFO: [VRFC 10-311] analyzing module emergency_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/generic_timer.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_timer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/green_wave_delay.v" into library work
+INFO: [VRFC 10-311] analyzing module green_wave_delay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/input_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module input_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/junction_fsm.v" into library work
+INFO: [VRFC 10-311] analyzing module junction_fsm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/reset_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module reset_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/shared_pedestrian_arbiter.v" into library work
+INFO: [VRFC 10-311] analyzing module shared_pedestrian_arbiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/traffic_system_top.v" into library work
+INFO: [VRFC 10-311] analyzing module traffic_system_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/shared_pedestrian_arbiter_tb_Self.v" into library work
+INFO: [VRFC 10-311] analyzing module shared_pedestrian_arbiter_tb_Self
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe shared_pedestrian_arbiter_tb_Self -s sim_shared_pedestrian_arbiter_tb_Self 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.shared_pedestrian_arbiter
+Compiling module work.shared_pedestrian_arbiter_tb_Sel...
+Built simulation snapshot sim_shared_pedestrian_arbiter_tb_Self
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 00:07:10 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim_shared_pedestrian_arbiter_tb_Self/xsim_script.tcl
+# xsim {sim_shared_pedestrian_arbiter_tb_Self} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+-----------------------------------------------
+ SHARED PEDESTRIAN ARBITER SELF-CHECKING TB
+-----------------------------------------------
+PASS: Reset clears grants and priority | A=0 B=0 Priority=0
+PASS: No requests after reset | A=0 B=0 Priority=0
+PASS: A-only request grants A | A=1 B=0 Priority=0
+PASS: A grant remains until done | A=1 B=0 Priority=0
+PASS: A completion clears grant and selects B priority | A=0 B=0 Priority=1
+PASS: No grant while idle | A=0 B=0 Priority=1
+PASS: B-only request grants B | A=0 B=1 Priority=1
+PASS: B completion clears grant and selects A priority | A=0 B=0 Priority=0
+PASS: Idle after B completion | A=0 B=0 Priority=0
+PASS: Both request with A priority grants A | A=1 B=0 Priority=0
+PASS: A completion switches priority to B | A=0 B=0 Priority=1
+PASS: Pending B request receives grant | A=0 B=1 Priority=1
+PASS: B completion switches priority to A | A=0 B=0 Priority=0
+PASS: Idle after alternating grants | A=0 B=0 Priority=0
+PASS: Both requests with A priority grants A | A=1 B=0 Priority=0
+PASS: A completion switches priority to B | A=0 B=0 Priority=1
+PASS: B receives grant with B priority | A=0 B=1 Priority=1
+PASS: B completion switches priority to A | A=0 B=0 Priority=0
+PASS: A granted before emergency | A=1 B=0 Priority=0
+PASS: Emergency clears both grants | A=0 B=0 Priority=0
+PASS: Emergency blocks new grants | A=0 B=0 Priority=0
+PASS: B request granted after emergency | A=0 B=1 Priority=0
+PASS: B completion after emergency | A=0 B=0 Priority=0
+PASS: A grant before reset | A=1 B=0 Priority=0
+PASS: Reset clears grants and priority | A=0 B=0 Priority=0
+PASS: Idle after reset release | A=0 B=0 Priority=0
+PASS: Idle operation | A=0 B=0 Priority=0
+PASS: Idle operation | A=0 B=0 Priority=0
+PASS: Idle operation | A=0 B=0 Priority=0
+-----------------------------------------------
+TOTAL PASS: 29
+TOTAL FAIL: 0
+ALL TESTS PASSED
+-----------------------------------------------
+$finish called at time : 611 ns : File "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/shared_pedestrian_arbiter_tb_Self.v" Line 234
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 00:07:12 2026...
+

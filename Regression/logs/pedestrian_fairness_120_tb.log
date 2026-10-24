@@ -1,0 +1,66 @@
+Testbench: pedestrian_fairness_120_tb.v
+Top module: pedestrian_fairness_120_tb
+Started: 10/25/2026 00:06:51
+
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/emergency_controller.v" into library work
+INFO: [VRFC 10-311] analyzing module emergency_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/generic_timer.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_timer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/green_wave_delay.v" into library work
+INFO: [VRFC 10-311] analyzing module green_wave_delay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/input_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module input_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/junction_fsm.v" into library work
+INFO: [VRFC 10-311] analyzing module junction_fsm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/reset_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module reset_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/shared_pedestrian_arbiter.v" into library work
+INFO: [VRFC 10-311] analyzing module shared_pedestrian_arbiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sources_1/new/traffic_system_top.v" into library work
+INFO: [VRFC 10-311] analyzing module traffic_system_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/pedestrian_fairness_120_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module pedestrian_fairness_120_tb
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe pedestrian_fairness_120_tb -s sim_pedestrian_fairness_120_tb 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.shared_pedestrian_arbiter
+Compiling module work.pedestrian_fairness_120_tb
+Built simulation snapshot sim_pedestrian_fairness_120_tb
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Sun Oct 25 00:06:54 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sim_pedestrian_fairness_120_tb/xsim_script.tcl
+# xsim {sim_pedestrian_fairness_120_tb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+------------------------------------
+ PEDESTRIAN FAIRNESS TEST: 120
+------------------------------------
+Junction A grants: 60
+Junction B grants: 60
+----------------------------------------
+PEDESTRIAN FAIRNESS TEST SUMMARY
+Requests tested: 120
+Errors detected: 0
+ALL TESTS PASSED
+----------------------------------------
+$finish called at time : 7260 ns : File "C:/Users/THRINATH/OneDrive/Desktop/Thrinath/temp/ATC/ATC.srcs/sim_2/new/pedestrian_fairness_120_tb.v" Line 142
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 00:06:56 2026...
+
