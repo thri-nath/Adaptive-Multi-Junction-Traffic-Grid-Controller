@@ -1,40 +1,40 @@
+
 # Adaptive Multi-Junction Traffic Grid Controller
 
 ## About the Project
 
-This project is about designing a traffic signal controller for multiple junctions using Verilog HDL. The main idea is to control traffic signals based on traffic conditions and coordinate signals between junctions.
+The **Adaptive Multi-Junction Traffic Grid Controller** is a Verilog HDL project designed to control and coordinate traffic signals at multiple junctions. It combines normal traffic-light sequencing with traffic-density adaptation, green-wave coordination, pedestrian request handling, and emergency vehicle priority.
 
-Along with normal traffic control, the design includes features such as pedestrian request handling, emergency vehicle support, and green-wave coordination. I am developing and testing the modules using Xilinx Vivado and its XSim simulator.
+The design is developed and simulated using **Xilinx Vivado** and **XSim**. Self-checking Verilog testbenches are used to verify expected behavior, while simulation waveforms help inspect signal transitions and timing.
 
 ## Project Objectives
 
-- Control traffic lights at multiple junctions.
-- Use traffic sensor inputs and traffic density values for signal control.
-- Coordinate signals between junctions using green-wave delay.
-- Handle pedestrian requests and manage shared pedestrian access.
+- Control traffic signals at two 4-way junctions: Junction A and Junction B.
+- Use traffic sensor inputs and density values to adapt signal timing.
+- Coordinate traffic signals using a green-wave delay mechanism.
+- Handle pedestrian requests and competing pedestrian demands.
 - Give priority to emergency conditions.
+- Synchronize external inputs and manage reset behavior.
 - Verify the design using self-checking testbenches.
 
-## Design Overview
+## System Architecture
 
-The design is divided into smaller Verilog modules. Each module handles a particular function, which makes testing and debugging easier.
-
-The main components are:
+The system is divided into smaller Verilog modules. Each module handles a specific function, making the design easier to test, debug, and maintain.
 
 | Module | Purpose |
 |---|---|
-| `junction_fsm` | Controls the traffic light states at a junction. |
-| `traffic_system_top` | Connects the main modules to form the complete system. |
-| `green_wave_delay` | Adds a delay for coordinating traffic signals between junctions. |
+| `junction_fsm` | Controls traffic-light states and sequencing at a junction. |
+| `traffic_system_top` | Connects the modules to form the complete traffic-control system. |
+| `green_wave_delay` | Provides delay logic for coordinating signal timing between junctions. |
 | `shared_pedestrian_arbiter` | Manages competing pedestrian requests. |
 | `emergency_controller` | Handles emergency traffic conditions. |
-| `input_sync` | Synchronizes external input signals. |
+| `input_sync` | Synchronizes external inputs to the design clock domain. |
 | `reset_sync` | Handles reset synchronization. |
-| Timer module | Provides timing support for the traffic controller. |
+| `generic_timer` | Provides timing support for the controller. |
 
-## Traffic Light States
+## Traffic-Light Encoding
 
-The traffic light outputs use the following encoding in the current `junction_fsm` implementation:
+The current `junction_fsm` implementation uses the following encoding:
 
 | Signal | Encoding |
 |---|---|
@@ -42,29 +42,86 @@ The traffic light outputs use the following encoding in the current `junction_fs
 | Yellow | `3'b010` |
 | Green | `3'b100` |
 
+These encodings should be checked against the RTL if the implementation changes.
+
+## Repository Structure
+
+```text
+Adaptive-Multi-Junction-Traffic-Grid-Controller/
+├── Regression/
+├── Verification/
+├── Waveforms/
+├── docs/
+├── rtl/
+├── tb_Self/
+└── README.md
+```
+
+### Folder Descriptions
+
+#### `rtl/` — RTL Source Code
+
+Contains the Verilog HDL modules that implement the traffic controller, including junction control, green-wave coordination, pedestrian arbitration, emergency handling, synchronization, and timing logic.
+
+#### `tb_Self/` — Self-Checking Testbenches
+
+Contains Verilog testbenches that automatically check expected outputs and behavior for individual modules and the integrated system.
+
+#### `Verification/` — Verification Evidence
+
+Organizes verification reports and supporting evidence for tested requirements, such as reset operation, emergency handling, pedestrian arbitration, and green-wave behavior.
+
+#### `Regression/` — Regression Testing
+
+Organizes regression-related files and test summaries used to check multiple testbenches after RTL changes.
+
+#### `Waveforms/` — Simulation Waveforms
+
+Stores waveform files or screenshots used to inspect traffic-light transitions, reset behavior, emergency operation, and timing relationships.
+
+#### `docs/` — Documentation
+
+Contains supporting project documents, such as architecture diagrams, progress reports, verification documentation, and the technical report.
+
+#### `README.md` — Project Overview
+
+Provides the project introduction, objectives, architecture, repository structure, verification status, and simulation instructions.
+
+> Folder descriptions are based on the current repository layout. Check the contents of each folder for the latest files and artifacts.
+
 ## Verification
 
-I am verifying the design using self-checking Verilog testbenches in Xilinx Vivado XSim. The testbenches check the expected outputs for different input conditions instead of relying only on visual waveform inspection.
+The project uses self-checking Verilog testbenches in Xilinx Vivado XSim. The tests check expected behavior instead of relying only on visual waveform inspection.
 
-The verification work includes:
+Verification scenarios include:
 
-- Reset behavior.
-- Normal traffic signal operation.
-- Green-wave coordination between junctions.
-- Pedestrian request handling.
-- Simultaneous pedestrian requests and arbitration.
+- Normal traffic-light sequencing.
+- Reset behavior and reset during operation.
+- Green-wave delay operation.
+- Traffic-density-dependent signal timing.
+- Pedestrian request handling and arbitration.
 - Emergency activation and recovery.
-- Changes in traffic density.
-- Reset during operation.
-- Delay operation, clearing, cancellation, and restart.
+- Timer operation, clearing, cancellation, and restart.
+- Integrated top-level system behavior.
 
-### Current Verification Results
+### Latest Recorded Regression Results
 
-The top-level self-checking testbench completed **37 checks with 0 errors** across the tested scenarios.
+The latest regression run recorded during development reported the following:
 
-The `green_wave_delay` testbench also passed its tested cases, including normal delay operation, output clearing, cancellation of a pending delay, and restarting after clearing.
+| Metric | Result |
+|---|---:|
+| Testbenches executed | 13 |
+| Passed | 13 |
+| Failed | 0 |
+| Needs review | 0 |
 
-These results apply to the scenarios covered by the current testbenches. Further testing and automated regression are planned as the project develops.
+The top-level self-checking testbench also reported **37 checks with 0 errors** in a separate run.
+
+These results apply only to the scenarios covered by the tests. Passing testbenches does not automatically prove that every project requirement has been satisfied.
+
+**Green-wave timing:** The required start-time offset between Junction A and Junction B must be checked against the specification and measured simulation timestamps before full timing compliance is claimed.
+
+Re-run regression after RTL changes and update this section using the latest actual results.
 
 ## Tools Used
 
@@ -72,40 +129,55 @@ These results apply to the scenarios covered by the current testbenches. Further
 - Xilinx Vivado
 - XSim simulator
 - Git and GitHub
-- Draw.io for the architecture diagram
+- Draw.io for architecture diagrams
 
-
-
-## How to Run the Simulation
+## How to Run a Simulation
 
 1. Open Xilinx Vivado.
-2. Create or open a simulation project.
-3. Add the required Verilog files from the `rtl` folder.
-4. Add the required self-checking testbench from `tb_Self`.
-5. Set the testbench as the simulation top module.
-6. Run Behavioral Simulation using XSim.
-7. Check the simulation transcript for PASS messages and errors.
-8. Open the waveform to inspect the signal transitions when needed.
+2. Open the existing project or create a simulation project.
+3. Add the required Verilog source files from `rtl/`.
+4. Add the appropriate self-checking testbench from `tb_Self/`.
+5. Set the selected testbench as the simulation top module.
+6. Ensure that all required dependent RTL modules are included.
+7. Run **Behavioral Simulation** using XSim.
+8. Check the simulation transcript for `PASS`, `FAIL`, and error messages.
+9. Open the waveform viewer when you need to inspect signal transitions or timing.
 
-Make sure all module dependencies are added before running the simulation.
+The required testbench and module dependencies depend on the scenario being tested.
+
+## Regression Testing
+
+The `Regression/` folder is used to organize regression-related files and results.
+
+After running a regression:
+
+1. Confirm that all expected testbenches were executed.
+2. Review the summary for passed, failed, and review-required tests.
+3. Investigate any failures or timing mismatches.
+4. Save useful logs, summaries, and waveforms in the appropriate folders.
+5. Update the verification results in this README only after checking the latest output.
+
+If a regression script is available, follow its instructions and run it from the appropriate project directory.
 
 ## Project Status
 
-The main RTL modules and the top-level design have been developed, and self-checking verification has been completed for several individual modules and the integrated system.
+The main RTL modules and top-level design have been developed, and self-checking verification has been performed for multiple individual modules and integrated scenarios.
 
-The current focus is on improving verification coverage, keeping the test reports and waveforms organized, and working towards automated regression testing so that the existing tests can be rerun whenever the RTL changes.
+The latest recorded regression run passed all 13 listed tests, with zero failures and zero tests requiring review.
+
+Further work focuses on checking specification compliance, expanding corner-case coverage, organizing verification evidence, and repeating regression after design changes. The green-wave timing requirement should be verified explicitly against the required offset and measured simulation results.
 
 ## Future Work
 
-- Add more corner-case tests.
-- Improve coverage of traffic and emergency scenarios.
-- Automate the execution of testbenches.
-- Run regression tests after RTL changes.
-- Continue documenting simulation results and fixing any issues found.
+- Expand corner-case and boundary-condition testing.
+- Improve traffic-density and emergency-scenario coverage.
+- Verify the green-wave offset quantitatively against the specification.
+- Keep regression runs reproducible.
+- Organize logs, reports, and representative waveforms.
+- Update documentation whenever the design or verification results change.
 
 ## GitHub Repository
 
-Source code, testbenches, reports, and other project files are available here:
+Source code, testbenches, verification evidence, waveforms, and documentation are available here:
 
 [Adaptive Multi-Junction Traffic Grid Controller](https://github.com/thri-nath/Adaptive-Multi-Junction-Traffic-Grid-Controller)
-
