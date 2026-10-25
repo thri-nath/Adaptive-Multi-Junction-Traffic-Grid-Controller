@@ -1,6 +1,6 @@
 
 param(
-    [string]$ProjectRoot = "C:\Users\THRINATH\OneDrive\Desktop\Thrinath\temp\ATC",
+   [string]$ProjectRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$RtlDir = "ATC.srcs\sources_1\new",
     [string]$TbDir = "ATC.srcs\sim_2\new",
     [string]$ResultsDir = "regression_results"
