@@ -1,8 +1,8 @@
 
 param(
    [string]$ProjectRoot = (Split-Path $PSScriptRoot -Parent),
-    [string]$RtlDir = "ATC.srcs\sources_1\new",
-    [string]$TbDir = "ATC.srcs\sim_2\new",
+    [string]$RtlDir = "rtl",
+    [string]$TbDir = "tb_Self",
     [string]$ResultsDir = "regression_results"
 )
 
