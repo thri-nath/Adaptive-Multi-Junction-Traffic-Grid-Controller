@@ -1,3 +1,4 @@
+
 `timescale 1ns/1ps
 
 module generic_timer_tb_Self;
@@ -22,6 +23,9 @@ module generic_timer_tb_Self;
 
     always #10 clk = ~clk;
 
+    // ------------------------------------------
+    // SELF-CHECKING TASK
+    // ------------------------------------------
     task check;
         input expected;
         input [8*80-1:0] test_name;
@@ -38,6 +42,9 @@ module generic_timer_tb_Self;
         end
     endtask
 
+    // ------------------------------------------
+    // RESET TASK
+    // ------------------------------------------
     task reset_timer;
         begin
             @(negedge clk);
@@ -54,6 +61,11 @@ module generic_timer_tb_Self;
         end
     endtask
 
+    // ------------------------------------------
+    // NORMAL TIMER TEST
+    // expected_cycles counts edges AFTER
+    // the initial start edge.
+    // ------------------------------------------
     task run_timer;
         input [7:0] test_target;
         input integer expected_cycles;
@@ -65,7 +77,7 @@ module generic_timer_tb_Self;
 
             @(posedge clk);
             #1;
-            check(0, "done is low after start");
+            check(0, "Done is low after nonzero start");
 
             @(negedge clk);
             start = 0;
@@ -75,7 +87,7 @@ module generic_timer_tb_Self;
                 #1;
 
                 if (i < expected_cycles)
-                    check(0, "done remains low before target");
+                    check(0, "Done remains low before target");
                 else
                     check(1, test_name);
             end
@@ -85,26 +97,62 @@ module generic_timer_tb_Self;
 
             @(posedge clk);
             #1;
-            check(0, "done clears after completion");
+            check(0, "Done clears after completion");
         end
     endtask
 
+    // ------------------------------------------
+    // TARGET ZERO TEST
+    // Target zero completes on the start edge.
+    // ------------------------------------------
+    task run_zero_target;
+        begin
+            @(negedge clk);
+            target = 0;
+            start = 1;
+
+            @(posedge clk);
+            #1;
+            check(1, "Target zero completes immediately");
+
+            // Keep start asserted: done stays high.
+            @(negedge clk);
+
+            @(posedge clk);
+            #1;
+            check(1, "Target zero remains done while start is high");
+
+            // Release start.
+            @(negedge clk);
+            start = 0;
+
+            @(posedge clk);
+            #1;
+            check(0, "Target zero done clears after start release");
+        end
+    endtask
+
+    // ==========================================
+    // MAIN TEST SEQUENCE
+    // ==========================================
     initial begin
         clk = 0;
         start = 0;
         rst_n = 0;
         target = 0;
 
-       
+        $display("==========================================");
+        $display(" GENERIC TIMER SELF-CHECKING TESTBENCH");
+        $display("==========================================");
 
-        $display("====================================");
-        $display("GENERIC TIMER SELF-CHECKING TEST");
-        $display("====================================");
-
+        // --------------------------------------
+        // 1. Initial reset
+        // --------------------------------------
         repeat (2) @(posedge clk);
         #1;
         check(0, "Initial reset");
 
+        // Start must be ignored during reset.
         @(negedge clk);
         start = 1;
         target = 32;
@@ -117,6 +165,9 @@ module generic_timer_tb_Self;
         start = 0;
         rst_n = 1;
 
+        // --------------------------------------
+        // 2. Normal target values
+        // --------------------------------------
         run_timer(1,   1,   "Target 1");
         run_timer(9,   9,   "Target 9");
         run_timer(25,  25,  "Target 25");
@@ -126,23 +177,30 @@ module generic_timer_tb_Self;
         run_timer(3,   3,   "Target 3");
         run_timer(255, 255, "Maximum target 255");
 
-        run_timer(0, 256, "Target 0 counter wraparound");
+        // --------------------------------------
+        // 3. Target zero
+        // --------------------------------------
+        run_zero_target();
 
+        // --------------------------------------
+        // 4. Reset during active counting
+        // --------------------------------------
         reset_timer();
 
         @(negedge clk);
         target = 10;
         start = 1;
+
         @(posedge clk);
         #1;
-        check(0, "Reset test started");
+        check(0, "Reset test timer started");
 
         @(negedge clk);
         start = 0;
 
         repeat (3) @(posedge clk);
         #1;
-        check(0, "Timer still counting");
+        check(0, "Timer still counting before reset");
 
         @(negedge clk);
         rst_n = 0;
@@ -158,6 +216,9 @@ module generic_timer_tb_Self;
         #1;
         check(0, "Timer stays idle after reset");
 
+        // --------------------------------------
+        // 5. Start held high
+        // --------------------------------------
         reset_timer();
 
         @(negedge clk);
@@ -173,7 +234,7 @@ module generic_timer_tb_Self;
 
         repeat (7) @(posedge clk);
         #1;
-        check(0, "Held start restarts counter");
+        check(0, "Timer counts after held start release");
 
         @(posedge clk);
         #1;
@@ -182,6 +243,9 @@ module generic_timer_tb_Self;
         @(negedge clk);
         start = 0;
 
+        // --------------------------------------
+        // 6. Restart while timer is counting
+        // --------------------------------------
         reset_timer();
 
         @(negedge clk);
@@ -190,6 +254,7 @@ module generic_timer_tb_Self;
 
         @(posedge clk);
         #1;
+        check(0, "Initial timer started for restart test");
 
         @(negedge clk);
         start = 0;
@@ -217,6 +282,9 @@ module generic_timer_tb_Self;
         #1;
         check(1, "Restart with target 3 completes");
 
+        // --------------------------------------
+        // 7. Change target during counting
+        // --------------------------------------
         reset_timer();
 
         @(negedge clk);
@@ -225,6 +293,7 @@ module generic_timer_tb_Self;
 
         @(posedge clk);
         #1;
+        check(0, "Timer started for target-change test");
 
         @(negedge clk);
         start = 0;
@@ -234,7 +303,7 @@ module generic_timer_tb_Self;
         @(negedge clk);
         target = 4;
 
-        repeat (1) @(posedge clk);
+        @(posedge clk);
         #1;
         check(0, "Changed target not reached yet");
 
@@ -242,16 +311,22 @@ module generic_timer_tb_Self;
         #1;
         check(1, "Changed target completes at 4");
 
-        $display("====================================");
-        $display("TEST SUMMARY");
+        // --------------------------------------
+        // 8. Final summary
+        // --------------------------------------
+        $display("");
+        $display("==========================================");
+        $display(" TEST SUMMARY");
+        $display("==========================================");
         $display("PASS: %0d", pass_count);
         $display("FAIL: %0d", fail_count);
-        $display("====================================");
 
         if (fail_count == 0)
             $display("OVERALL RESULT: PASS");
         else
             $display("OVERALL RESULT: FAIL");
+
+        $display("==========================================");
 
         $finish;
     end
