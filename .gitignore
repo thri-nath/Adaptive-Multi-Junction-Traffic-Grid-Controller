@@ -1,0 +1,31 @@
+# Vivado generated logs and journals
+*.jou
+*.log
+*.str
+*.backup.jou
+*.backup.log
+
+# Vivado generated project/cache directories
+.Xil/
+.cache/
+.hw/
+.ip_user_files/
+.sim/
+xsim.dir/
+
+# Simulation-generated waveform and output files
+*.wdb
+*.vcd
+*.pb
+
+# Temporary and backup files
+*.tmp
+*.bak
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
