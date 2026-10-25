@@ -176,6 +176,12 @@ Further work focuses on checking specification compliance, expanding corner-case
 - Organize logs, reports, and representative waveforms.
 - Update documentation whenever the design or verification results change.
 
+
+## Simulation Guide
+
+For detailed instructions on setting up Vivado, adding RTL modules and testbenches, running XSim simulations, inspecting waveforms, and troubleshooting common errors, see the [Simulation Guide](docs/simulation_guide.md).
+
+
 ## GitHub Repository
 
 Source code, testbenches, verification evidence, waveforms, and documentation are available here:
